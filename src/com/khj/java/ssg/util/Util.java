@@ -1,4 +1,4 @@
-package com.khj.java.ssg;
+package com.khj.java.ssg.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
