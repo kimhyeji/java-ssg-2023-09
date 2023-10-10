@@ -1,5 +1,6 @@
 package com.khj.java.ssg.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,9 +13,9 @@ public class MemberController extends Controller {
 	private String command;
 	private String actionMethodName;
 	
-	public MemberController(Scanner sc, List<Member> members) {
-		this.members = members;
-		this.sc = sc;
+	public MemberController(Scanner sc) {
+		this.sc = sc;	
+		members = new ArrayList<Member>();
 	}
 	
 	public void doAction(String command, String actionMethodName) {
@@ -28,7 +29,7 @@ public class MemberController extends Controller {
 		}
 	}
 
-	public void doJoin() {
+	private void doJoin() {
 		int id = members.size() + 1;
 		String regDate = Util.getNowDateStr();
 
