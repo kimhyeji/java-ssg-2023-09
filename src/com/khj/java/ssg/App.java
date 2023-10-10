@@ -1,15 +1,10 @@
 package com.khj.java.ssg;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import com.khj.java.ssg.controller.ArticleController;
 import com.khj.java.ssg.controller.Controller;
 import com.khj.java.ssg.controller.MemberController;
-import com.khj.java.ssg.dto.Article;
-import com.khj.java.ssg.dto.Member;
-import com.khj.java.ssg.util.Util;
 
 public class App {
 	public void start() {
