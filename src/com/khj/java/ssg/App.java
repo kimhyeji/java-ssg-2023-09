@@ -8,7 +8,7 @@ import com.khj.java.ssg.controller.MemberController;
 
 public class App {
 	public void start() {
-		System.out.println("== 프로그램 시작!! == ");
+		System.out.println("== 프로그램 시작 == ");
 
 		Scanner sc = new Scanner(System.in);
 

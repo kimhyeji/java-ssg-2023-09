@@ -1,10 +1,9 @@
 package com.khj.java.ssg.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.khj.java.ssg.dto.Article;
+import com.khj.java.ssg.dao.MemberDao;
 import com.khj.java.ssg.dto.Member;
 import com.khj.java.ssg.util.Util;
 
@@ -13,10 +12,13 @@ public class MemberController extends Controller {
 	private Scanner sc;
 	private String command;
 	private String actionMethodName;
+	private MemberDao memberDao;
 
 	public MemberController(Scanner sc) {
 		this.sc = sc;
-		members = new ArrayList<Member>();
+		
+		memberDao = new MemberDao();
+		members = memberDao.members;
 	}
 
 	public void doAction(String command, String actionMethodName) {
@@ -80,7 +82,7 @@ public class MemberController extends Controller {
 	}
 
 	private void doJoin() {
-		int id = members.size() + 1;
+		int id = memberDao.getNewId();
 		String regDate = Util.getNowDateStr();
 
 		String loginId = null;
@@ -117,7 +119,7 @@ public class MemberController extends Controller {
 		String name = sc.nextLine();
 
 		Member member = new Member(id, regDate, loginId, loginPw, name);
-		members.add(member);
+		memberDao.add(member);
 
 		System.out.printf("%d번 회원이 생성되었습니다. 환영합니다^^\n", id);
 	}
@@ -158,8 +160,8 @@ public class MemberController extends Controller {
 
 	public void makeTestData() {
 		System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
-		members.add(new Member(1, Util.getNowDateStr(), "admin", "admin", "관리자"));
-		members.add(new Member(2, Util.getNowDateStr(), "user1", "user1", "유저1"));
-		members.add(new Member(3, Util.getNowDateStr(), "user2", "user2", "유저2"));
+		memberDao.add(new Member(memberDao.getNewId(), Util.getNowDateStr(), "admin", "admin", "관리자"));
+		memberDao.add(new Member(memberDao.getNewId(), Util.getNowDateStr(), "user1", "user1", "유저1"));
+		memberDao.add(new Member(memberDao.getNewId(), Util.getNowDateStr(), "user2", "user2", "유저2"));
 	}
 }

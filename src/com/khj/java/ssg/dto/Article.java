@@ -1,7 +1,7 @@
 package com.khj.java.ssg.dto;
 
 public class Article extends Dto {
-	public int memberId; // 7
+	public int memberId;
 	public String title;
 	public String body;
 	public int hit;
