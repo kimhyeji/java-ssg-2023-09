@@ -2,6 +2,7 @@ package com.khj.java.ssg.controller;
 
 import java.util.Scanner;
 
+import com.khj.java.ssg.container.Container;
 import com.khj.java.ssg.dto.Member;
 import com.khj.java.ssg.service.MemberService;
 import com.khj.java.ssg.util.Util;
@@ -15,7 +16,7 @@ public class MemberController extends Controller {
 	public MemberController(Scanner sc) {
 		this.sc = sc;
 		
-		memberService = new MemberService();
+		memberService = Container.memberService;
 	}
 
 	public void doAction(String command, String actionMethodName) {

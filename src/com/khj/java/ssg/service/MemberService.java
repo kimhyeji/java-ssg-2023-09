@@ -1,5 +1,6 @@
 package com.khj.java.ssg.service;
 
+import com.khj.java.ssg.container.Container;
 import com.khj.java.ssg.dao.MemberDao;
 import com.khj.java.ssg.dto.Member;
 
@@ -7,7 +8,7 @@ public class MemberService {
 	public MemberDao memberDao;
 
 	public MemberService() {
-		memberDao = new MemberDao();
+		memberDao = Container.memberDao;
 	}
 
 	public Member getMemberByLoginId(String loginId) {

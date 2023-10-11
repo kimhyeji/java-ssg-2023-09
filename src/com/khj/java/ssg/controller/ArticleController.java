@@ -3,6 +3,7 @@ package com.khj.java.ssg.controller;
 import java.util.List;
 import java.util.Scanner;
 
+import com.khj.java.ssg.container.Container;
 import com.khj.java.ssg.dto.Article;
 import com.khj.java.ssg.service.ArticleService;
 import com.khj.java.ssg.service.MemberService;
@@ -18,8 +19,8 @@ public class ArticleController extends Controller {
 	public ArticleController(Scanner sc) {
 		this.sc = sc;
 
-		articleService = new ArticleService();
-		memberService = new MemberService();
+		articleService = Container.articleService;
+		memberService = Container.memberService;
 	}
 
 	public void doAction(String command, String actionMethodName) {

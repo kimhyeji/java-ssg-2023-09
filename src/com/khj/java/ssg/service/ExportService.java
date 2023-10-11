@@ -17,8 +17,6 @@ public class ExportService {
 	public void makeHtml() {
 		List<Article> articles = articleService.getArticles();
 		
-		System.out.println(articles.size());
-		
 		for (Article article : articles ) {
 			String writerName = memberService.getMemberNameById(article.memberId);
 			

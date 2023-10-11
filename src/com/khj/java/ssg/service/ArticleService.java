@@ -2,6 +2,7 @@ package com.khj.java.ssg.service;
 
 import java.util.List;
 
+import com.khj.java.ssg.container.Container;
 import com.khj.java.ssg.dao.ArticleDao;
 import com.khj.java.ssg.dto.Article;
 
@@ -9,7 +10,7 @@ public class ArticleService {
 	private ArticleDao articleDao;
 
 	public ArticleService() {
-		articleDao = new ArticleDao();
+		articleDao = Container.articleDao;
 	}
 
 	public int getLastId() {
