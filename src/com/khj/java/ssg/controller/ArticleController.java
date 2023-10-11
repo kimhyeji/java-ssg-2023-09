@@ -79,9 +79,9 @@ public class ArticleController extends Controller {
 		for (int i = articles.size() - 1; i >= 0; i--) {
 			Article article = articles.get(i);
 			
-			String writerName = memberService.getMemberNameById(i);
+			String writerName = memberService.getMemberNameById(article.memberId);
 
-			System.out.printf("%4d | %4s | %4d |  %s\n", article.id, writerName, article.hit, article.title);
+			System.out.printf("%4d | %4s | %4d | %s\n", article.id, writerName, article.hit, article.title);
 		}
 	}
 
@@ -97,10 +97,11 @@ public class ArticleController extends Controller {
 		}
 
 		foundArticle.increaseHit();
+		String writerName = memberService.getMemberNameById(foundArticle.memberId);
 
 		System.out.printf("번호 : %d\n", foundArticle.id);
 		System.out.printf("날짜 : %s\n", foundArticle.regDate);
-		System.out.printf("작성자 : %s\n", foundArticle.memberId);
+		System.out.printf("작성자 : %s\n", writerName);
 		System.out.printf("제목 : %s\n", foundArticle.title);
 		System.out.printf("내용 : %s\n", foundArticle.body);
 		System.out.printf("조회 : %s\n", foundArticle.hit);

@@ -28,6 +28,15 @@ public class ExportService {
 			html += "<div>제목 : " + article.title + "</div>";
 			html += "<div>내용 : " + article.body + "</div>";
 			
+			if ( article.id > 1) {
+				html += "<div><a href=\"" + (article.id - 1) + ".html" +"\">이전글</a></div>";
+			}
+			if ( article.id < articleService.getLastId() ) {
+				html += "<div><a href=\"" + (article.id + 1) + ".html" +"\">다음글</a></div>";
+			}
+			// 임의. 데이터 삭제 시에는 적용 안됨.
+			
+			
 			Util.writeFileContents("exportHtml/" + fileName, html);
 		}
 	}
