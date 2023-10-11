@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.khj.java.ssg.dto.Article;
 import com.khj.java.ssg.service.ArticleService;
+import com.khj.java.ssg.service.MemberService;
 import com.khj.java.ssg.util.Util;
 
 public class ArticleController extends Controller {
@@ -12,11 +13,13 @@ public class ArticleController extends Controller {
 	private String command;
 	private String actionMethodName;
 	private ArticleService articleService;
+	private MemberService memberService;
 
 	public ArticleController(Scanner sc) {
 		this.sc = sc;
 
 		articleService = new ArticleService();
+		memberService = new MemberService();
 	}
 
 	public void doAction(String command, String actionMethodName) {
@@ -74,8 +77,10 @@ public class ArticleController extends Controller {
 		System.out.println("번호 | 작성자 | 조회 | 제목");
 		for (int i = articles.size() - 1; i >= 0; i--) {
 			Article article = articles.get(i);
+			
+			String writerName = memberService.getMemberNameById(i);
 
-			System.out.printf("%4d | %4d | %4d |  %s\n", article.id, article.memberId, article.hit, article.title);
+			System.out.printf("%4d | %4s | %4d |  %s\n", article.id, writerName, article.hit, article.title);
 		}
 	}
 
